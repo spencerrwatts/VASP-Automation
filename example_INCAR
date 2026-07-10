@@ -1,7 +1,7 @@
 # This is your input file that tells vasp what to do during calculations.
 # Using a pound symbol in front of a line tells the system not to read the line.
 
-SYSTEM = PtBi6Cl2 # what your system will be named in your OUTCAR file
+SYSTEM = 'System Name' # what your system will be named in your OUTCAR file
 ISTART = 0 # determines whether the calculation reads from an existing WAVECAR file (none exists yet)
 ICHARG = 2 # calculate charge density from WAVECAR file - initially set to false
 
@@ -15,7 +15,7 @@ EDIFF = 1E-06 # global break condition for SC loop, determines precision of calc
 EDIFFG = -0.02 # energy difference between steps that must be met for SC loop to break
 NSW = 100 # number of ionic relaxation steps
 
-ENCUT = 340 # energy cutoff - this should be 1.3x more than the greatest ENMAX in your POTCAR or more
+ENCUT = 320 # energy cutoff - this should be 1.3x more than the greatest ENMAX in your POTCAR or more
 LREAL = auto # projection done in reciprocal space. If your supercell is 'large', you can set this to Auto for a more efficient calculation
 EMIN =    -9.00000000
 EMAX =     6.00000000
@@ -39,12 +39,13 @@ ISMEAR =   0 # determines how partial occupancies are set for each orbital. 0 - 
 
 # Spin-polarized calculations
 # ISPIN = 2 # indicates spin-polarization
-# MAGMOM = 4*0 4*1 # magnetic moment predictions - typically the number of unpaired electrons for each atom
+# MAGMOM = # magnetic moment predictions - typically the number of unpaired electrons for each atom
 
 # Spin-orbit Coupling - use vasp_ncl for calculations!
 # LSORBIT = .true. # turns on spin-orbit coupling
 # LNONCOLLINEAR = .true.
-# MAGMOM =
-# ISYM = -1 # only use if you get errors with calculations - this switches off symmetry
+# MAGMOM = # this is the internal magnetic axis
+# ISYM = -1 # this switches off symmetry
+# SAXIS = 1 0 0 # this is the external magnetic axis
 
 
