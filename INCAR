@@ -1,0 +1,50 @@
+# This is your input file that tells vasp what to do during calculations.
+# Using a pound symbol in front of a line tells the system not to read the line.
+
+SYSTEM = PtBi6Cl2 # what your system will be named in your OUTCAR file
+ISTART = 0 # determines whether the calculation reads from an existing WAVECAR file (none exists yet)
+ICHARG = 2 # calculate charge density from WAVECAR file - initially set to false
+
+ISIF = 3 # relaxes positions, cell shape, and cell volume
+PREC = Accurate # precision mode
+ADDGRID =  .true. # additional support grid for calculations, helps large systems converge
+NELM = 90 # maximum number of self-consistency steps
+NELMIN = 4 # minimum number of self-consistency steps
+IBRION = 2 # indicates this is a structural optimization calculation (conjugate gradient mode)
+EDIFF = 1E-06 # global break condition for SC loop, determines precision of calculation
+EDIFFG = -0.02 # energy difference between steps that must be met for SC loop to break
+NSW = 100 # number of ionic relaxation steps
+
+ENCUT = 340 # energy cutoff - this should be 1.3x more than the greatest ENMAX in your POTCAR or more
+LREAL = auto # projection done in reciprocal space. If your supercell is 'large', you can set this to Auto for a more efficient calculation
+EMIN =    -9.00000000
+EMAX =     6.00000000
+ISMEAR =   0 # determines how partial occupancies are set for each orbital. 0 - for relax/band/large systems, 1 - metals, -5 for insulators/semiconductors
+# LCHARG = .true. # write new CHG and CHGCAR files
+# GGA = PS # revised PBE for solids, if you want to compare between functionals
+
+# DOS Calculations
+# LORBIT = 11 # DOSCAR and PROCAR are written
+# NEDOS = 1000 # number of DOS points (max)
+
+# Bader Charges
+# LAECHG = .true. # all electron charge density will be written from calculation
+# LELF = .true. # writes ELFCAR
+
+# COHP Analysis
+# LWAVE = .true. # write wave functions in WAVECAR
+# NBANDS = 600 # MUST set bands manually for Lobster
+# RWIGS = # adjust atomic radii here if POTCAR ones are unreasonable
+# ISYM = -1 # turn off symmetry calculations - Lobster cannot read these
+
+# Spin-polarized calculations
+# ISPIN = 2 # indicates spin-polarization
+# MAGMOM = 4*0 4*1 # magnetic moment predictions - typically the number of unpaired electrons for each atom
+
+# Spin-orbit Coupling - use vasp_ncl for calculations!
+# LSORBIT = .true. # turns on spin-orbit coupling
+# LNONCOLLINEAR = .true.
+# MAGMOM =
+# ISYM = -1 # only use if you get errors with calculations - this switches off symmetry
+
+
